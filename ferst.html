@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hallo Opa</title>
+  <script>
+    'use strict';
+    (function () {
+      function zeichnen() {
+        var element = document.getElementById('canvas');
+        if (element.getContext) {
+          var context = element.getContext('2d');
+          var grad = context.createLinearGradient(0, 0, 0, 30);
+          grad.addColorStop(0, "white");
+          grad.addColorStop(1, "#888888");
+          context.fillStyle = grad;
+          context.fillRect(0, 0, 150, 30);
+        }
+      }
+      document.addEventListener("DOMContentLoaded", function () {
+        zeichnen();
+      });
+    }());
+  </script>
+  <style>
+    canvas {
+      background: white;
+      border: 1px solid #333;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>Beispiel: Rechteck mit canvas</h1>
+  <main>
+    <canvas id="canvas" width="300" height="150">Beispiel für ein Rechteck mit Canvas</canvas>
+  </main>
+
+</body>
+
+</html>

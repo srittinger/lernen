@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>formular</title>
+    <script>
+        'use strict';
+        function submitFormular() {
+          console.log("abgeschickt ...");
+          var formular = document.forms["anmeldeFormular"];
+          var name = formular.elements["name"].value;
+          var alter = formular.elements["alter"].value;
+          var erwachsener = formular.elements["erwachsener"];
+          console.log('Name: ' + name);
+          console.log('Alter: ' + alter);
+          console.log('Erwachsener: ' + erwachsener[0].checked);
+          if (alter < 18 && erwachsener[0].checked) {
+            document.getElementById('ausgabe').innerHTML="Das stimmt nicht!";
+          } else {
+            document.getElementById('ausgabe').innerHTML="Willkommen " + name;
+          }
+          return false;
+        }
+    </script>
+  </head>
+  <body>
+    <h1>Silas Test-Seite</h1>
+    <p>Nur fuer Leute ueber 18 oder die die Wahrheit sagen ...</p>
+    <form name="anmeldeFormular">
+      <fieldset>
+        <label>Name</label>
+        <input type="text" id="name" name="name" value=""/>
+        <label>Alter</label>
+        <input type="text" id="alter" name="alter" value=""/>
+        <label>Erwachsener:</label>
+        Ja<input type="radio" name="erwachsener" value="Erwachsener"/>
+        Nein<input type="radio" name="erwachsener" value="Kind"/>
+        <input type="button" value="Abschicken ..." onclick="submitFormular();"/>
+      </fieldset>
+    </form>
+    <div id="ausgabe">Hier kommt der Text</div>
+  </body>
+</html>

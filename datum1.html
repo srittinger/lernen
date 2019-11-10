@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hallo Opa</title>
+    <script>
+        'use strict';
+        var name = '';
+        var alter = '';
+        var erwachsen = new Date();
+        erwachsen.setFullYear(erwachsen.getFullYear()-18);
+
+        name = prompt('Bitte geben sie ihren Name ein!',name);
+        alter = prompt ('Bitte geben sie ihr geburtsdatum TT/MM/JJJJ!',alter);
+        // Das ist ein Kommentar ...
+        // jetzt zerhacke ich alter in die einzelteile
+        // die ersten beiden Zeichen
+        let tag = alter.substr(0,2);
+        // Falls es mit 0 anfaengt, muss man die noch weg machen
+        tag = tag.startsWith('0') ? tag.substr(1,1) : tag;
+        // das selbe mit dem Monat
+        let monat = alter.substr(3,2);
+        monat = monat.startsWith('0') ? monat.substr(1,1) : monat;
+        let jahr = alter.substr(6,4);
+        // beim Monat muss man 1 abziehen, weil immer ab 0 gezaehlt wird, d.h. Januar ist Monat 0, Februar ist Monat 1 ...
+        let alterDatum = new Date(jahr, monat-1, tag);
+        // wenn du etwas testen moechtest, kannst du es mit dem folgenden Befehl in der Konsole des Browsers ausgeben
+        // im Browser F12 druecken, dann siehst du unten die Ausgabe oder Fehler
+        console.log('tag:' + tag);
+        console.log('monat:' + monat);
+        console.log('jahr:' + jahr);
+        console.log('alterDatum:' + alterDatum);
+        if (alterDatum <= erwachsen) {
+          alert ('Hallo, '+ name)
+        } else {
+          alert ('Du kommst hier nicht rein!');
+        }  
+    </script>
+  </head>
+  <body>
+
+  </body>
+</html>
